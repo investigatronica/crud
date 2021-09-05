@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+{% with messages = get_flashed_messages()  %}
+{% if messages %}
+<div class="col-md-5">
+    {% for message in messages %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+    <form method="POST" action="/login" class="w-25 p-3 mx-auto d-grid gap-3">
+        <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        <input class="form-control" name="password" placeholder="Password" type="password">
+        <button class="btn btn-primary" type="submit">Login</button>
+        <a class="btn btn-secondary" href="/register" role="button" style="float: right;">Register</a>
+    </form>
+ 
+{% endblock %}
