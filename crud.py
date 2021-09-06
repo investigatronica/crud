@@ -11,13 +11,6 @@ import simplejson as json
 # initializations
 app = Flask(__name__)
 
-# Mysql Connection
-# app.config['MYSQL_HOST'] = '172.18.0.1' 
-# app.config['MYSQL_USER'] = os.getenv('FLASK_MYSQL_USER')
-# app.config['MYSQL_PASSWORD'] = os.getenv('FLASK_MYSQL_PASSWORD')
-# app.config['MYSQL_DB'] = os.getenv('FLASK_MYSQL_DB')
-# mysql = MySQL(app)
-
 mysql_flask = MySQL(app
             ,prefix="mysql1"
             ,host="172.18.0.1"
@@ -36,7 +29,7 @@ mysql_temp = MySQL(app
             ,cursorclass=pymysql.cursors.DictCursor)
 
 # settings
-app.secret_key = "mysecretkey"
+app.secret_key = os.getenv("FLASK_SECRET_KEY")
 # Configure session to use filesystem (instead of signed cookies)
 # app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
@@ -182,6 +175,7 @@ def register():
         return render_template('register.html')
 
 @app.route('/temp')
+@login_required
 def temperatura():
     cur = mysql_temp.get_db().cursor()
     cur.execute('SELECT temp_ext, temp_int, temp_nuevo1 FROM datos ORDER BY id DESC LIMIT 1')
