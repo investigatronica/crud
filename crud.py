@@ -20,7 +20,7 @@ mysql_flask = MySQL(app
             ,autocommit=True)
 
 mysql_temp = MySQL(app
-            ,prefix="mysql1"
+            ,prefix="mysql2"
             ,host="172.18.0.1"
             ,user=os.getenv("FLASK_MYSQL_USER")
             ,password=os.getenv("FLASK_MYSQL_PASSWORD")
@@ -37,7 +37,6 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 
-# print(app.config)
 # routes
 
 def login_required(f):
