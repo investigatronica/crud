@@ -58,28 +58,37 @@
       </table>
     </div>
   </div>
-  <div class="row pt-5">
-    <div class="card text-white bg-primary mb-3 m-5" style="max-width: 12rem;">
-      <div class="card-header">Temperatura Exterior</div>
-      <div class="card-body mt-3">
-        <h3 class="card-title position-absolute bottom-0 start-50 translate-middle-x text-nowrap" id="temp_ext"></h3>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card text-white bg-primary mb-3 m-5" style="max-width: 12rem;">
+        <div class="card-header">Temperatura Exterior</div>
+        <div class="card-body mt-3">
+          <h3 class="card-title position-absolute bottom-0 start-50 translate-middle-x text-nowrap" id="temp_ext"></h3>
+        </div>
       </div>
     </div>
-    <div class="card text-white bg-primary mb-3 m-5" style="max-width: 12rem;">
-      <div class="card-header">Temperatura Interior</div>
-      <div class="card-body">
-        <h3 class="card-title position-absolute bottom-0 start-50 translate-middle-x text-nowrap" id="temp_int"></h3>
+    <div class="col-sm-4">
+      <div class="card text-white bg-primary mb-3 m-5" style="max-width: 12rem;">
+        <div class="card-header">Temperatura Interior</div>
+        <div class="card-body mt-3">
+          <h3 class="card-title position-absolute bottom-0 start-50 translate-middle-x text-nowrap" id="temp_int"></h3>
+        </div>
       </div>
     </div>
-    <div class="card text-white bg-primary mb-3 m-5" style="max-width: 13rem;">
-      <div class="card-header">Temperatura Agua</div>
-      <div class="card-body">
-        <h3 class="card-title position-absolute bottom-0 start-50 translate-middle-x text-nowrap" id="temp_h2o"></h3>
+    <div class="col-sm-4">
+      <div class="card text-white bg-primary mb-3 m-5" style="max-width: 12rem;">
+        <div class="card-header">Temperatura Agua</div>
+        <div class="card-body mt-3">
+          <h3 class="card-title position-absolute bottom-0 start-50 translate-middle-x text-nowrap" id="temp_h2o"></h3>
+        </div>
       </div>
     </div>
   </div>
- 
-  <script>
+  <div class="row pt-5">
+    <iframe src="https://tucan.duckdns.org:3002/d-solo/-fBRylMnk/temperatura-ambiente?orgId=1&refresh=1m&theme=light&panelId=4" width="850" height="500" frameborder="0"></iframe>
+  </div>
+  
+<script>
     function adquirir() {
       fetch('https://tucan.duckdns.org/temp')
       .then(response => response.json())
